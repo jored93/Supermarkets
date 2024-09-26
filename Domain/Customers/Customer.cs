@@ -5,7 +5,7 @@ namespace Domain.Customers;
 
 public sealed class Customer : AggregateRoot
 {
-    public Customer(CustomerId id, CharacterString name, CharacterString lastName, string email, Identification identification, bool isActive)
+    public Customer(CustomerId id, string name, string lastName, string email, Identification identification, bool isActive)
     {
         Id = id;
         Name = name;
@@ -20,10 +20,15 @@ public sealed class Customer : AggregateRoot
     }
 
     public CustomerId Id { get; private set; }
-    public CharacterString Name { get; private set; }
-    public CharacterString LastName { get; private set; }
+    public string Name { get; private set; }
+    public string LastName { get; private set; }
     public string FullName => $"{Name} {LastName}";
     public string Email { get; private set; } = string.Empty;
     public Identification Identification { get; private set; }
     public bool IsActive { get; set; }
+
+    public static Customer UpdateCustomer(Guid id, string name, string lastName, string email, Identification identification, bool active)
+    {
+        return new Customer(new CustomerId(id), name, lastName, email, identification, active);
+    }
 }

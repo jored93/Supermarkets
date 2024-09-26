@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace Application.Customers.Create;
 
 public record CreateCustomerCommand(
@@ -8,4 +6,4 @@ public record CreateCustomerCommand(
     string Email,
     string Identification,
     bool IsActive
-    ) : IRequest<Unit>;
+    ) : IRequest<ErrorOr<Guid>>;

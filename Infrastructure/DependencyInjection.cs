@@ -1,6 +1,8 @@
 using Application.Data;
+using Domain.Categories;
 using Domain.Customers;
 using Domain.Primitives;
+using Domain.Products;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +30,8 @@ public static class DependencyInjection
                 sp.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
 
         return services;
     }

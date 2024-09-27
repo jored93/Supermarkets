@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Web.API.Common.Errors;
 
-public class EasyPOSProblemDetailsFactory : ProblemDetailsFactory
+public class SupermarketsProblemDetailsFactory : ProblemDetailsFactory
 {
     private readonly ApiBehaviorOptions _options;
 
-    public EasyPOSProblemDetailsFactory(ApiBehaviorOptions options)
+    public SupermarketsProblemDetailsFactory(ApiBehaviorOptions options)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
     }

@@ -3,6 +3,9 @@ using Application.Data;
 using Domain.Customers;
 using Domain.Primitives;
 using Microsoft.EntityFrameworkCore;
+using Domain.Categories;
+using Domain.Invoices;
+using Domain.Products;
 
 namespace Infrastructure.Persistence;
 
@@ -16,7 +19,10 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
     }
 
     public DbSet<Customer> Customers { get; set; }
-
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Invoice> Invoices { get; set; }
+    public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);

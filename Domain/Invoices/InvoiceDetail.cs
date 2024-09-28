@@ -23,4 +23,14 @@ public sealed class InvoiceDetail : AggregateRoot
     public int Quantity { get; private set; }
     public decimal UnitPrice { get; private set; }
     public decimal TotalPrice { get; private set; }
+
+    public void UpdateStock(Product product)
+    {
+        if (product.Stock == 0)
+        {
+            throw new InvalidOperationException("Cannot add product to invoice. Stock is zero.");
+        }
+
+        product.DecreaseStock(Quantity);
+    }
 }

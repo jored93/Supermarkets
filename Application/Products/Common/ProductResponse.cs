@@ -5,6 +5,7 @@ public record ProductResponse(
     string Name,
     string Description,
     decimal Price,
+    int Stock,
     Guid CategoryId,
     bool IsActive
 );

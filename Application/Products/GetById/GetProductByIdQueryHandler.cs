@@ -24,6 +24,7 @@ internal sealed class GetProductByIdQueryHandler : IRequestHandler<GetProductByI
             product.Name,
             product.Description,
             product.Price,
+            product.Stock,
             product.CategoryId.Value,
             product.IsActive);
     }

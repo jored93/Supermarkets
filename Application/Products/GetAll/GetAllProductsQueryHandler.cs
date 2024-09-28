@@ -21,6 +21,7 @@ internal sealed class GetAllProductsQueryHandler : IRequestHandler<GetAllProduct
                 product.Name,
                 product.Description,
                 product.Price,
+                product.Stock,
                 product.CategoryId.Value,
                 product.IsActive
             )).ToList();

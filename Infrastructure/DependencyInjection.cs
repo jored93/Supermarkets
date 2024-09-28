@@ -1,6 +1,7 @@
 using Application.Data;
 using Domain.Categories;
 using Domain.Customers;
+using Domain.Invoices;
 using Domain.Primitives;
 using Domain.Products;
 using Infrastructure.Persistence;
@@ -32,6 +33,7 @@ public static class DependencyInjection
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 
         return services;
     }

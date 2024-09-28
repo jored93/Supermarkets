@@ -1,23 +1,83 @@
-## Base Clean Architecture .net
+# Base Clean Architecture .net
 
-1. dotnet new sln -o Supermarkets
-2. cd Supermarkets 
+## Steps
 
-3. dotnet new classlib -o Domain -f net8.0
-4. dotnet new classlib -o Application -f net8.0
-5. dotnet new classlib -o Infrastructure -f net8.0
-6. dotnet new webapi -o Web.API -f net8.0 -controllers
+1. Create project folder
 
+ ```bash
+  dotnet new sln -o Supermarkets
+  ```
 
-7. dotnet add Application/Application.csproj reference Domain/Domain.csproj
-8. dotnet add Infrastructure/Infrastructure.csproj reference Domain/Domain.csproj
-9. dotnet add Infrastructure/Infrastructure.csproj reference Application/Application.csproj
-10. dotnet add Web.API/Web.API.csproj reference Application/Application.csproj Infrastructure/Infrastructure.csproj
+ ```bash
+  cd Supermarkets
+  ```
 
-11. dotnet sln add Web.API/Web.API.csproj
-12. dotnet sln add Application/Application.csproj
-13. dotnet sln add Infrastructure/Infrastructure.csproj
-14. dotnet sln add Domain/Domain.csproj
+2. Create layer clean architecture CLI command or create by the IDE (right click, add project and select new classlib)
 
-15. dotnet build
-16. dotnet run --project Web.API
+ ```bash
+  dotnet new classlib -o Domain -f net8.0
+  ```
+
+ ```bash
+  dotnet new classlib -o Application -f net8.0
+  ```
+
+ ```bash
+  dotnet new classlib -o Infrastructure -f net8.0
+  ```
+
+ ```bash
+  dotnet new webapi -o Web.API -f net8.0 -controllers
+  ```
+
+3. Add internal references
+
+ ```bash
+  dotnet add Application/Application.csproj reference Domain/Domain.csproj
+  ```
+
+ ```bash
+  dotnet add Infrastructure/Infrastructure.csproj reference Domain/Domain.csproj
+  ```
+
+ ```bash
+  dotnet add Infrastructure/Infrastructure.csproj reference Application/Application.csproj
+  ```
+
+ ```bash
+  dotnet add Web.API/Web.API.csproj reference Application/Application.csproj Infrastructure/Infrastructure.csproj
+  ```
+
+4. (Optional) In case of create the classlib by CLI
+
+ ```bash
+  dotnet sln add Web.API/Web.API.csproj
+  ```
+
+ ```bash
+  dotnet sln add Application/Application.csproj
+  ```
+
+ ```bash
+  dotnet sln add Infrastructure/Infrastructure.csproj
+  ```
+
+ ```bash
+  dotnet sln add Domain/Domain.csproj
+  ```
+
+5. (Optional) Run project by CLI
+
+ ```bash
+  dotnet build
+  ```
+
+ ```bash
+  dotnet run --project Web.API
+  ```
+
+6. Create docker MSSQL database
+
+ ```bash
+  docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong#Password" -p 1433:1433 -d --name sqlserver  mcr.microsoft.com/mssql/server:2022-latest
+  ```

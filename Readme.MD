@@ -81,3 +81,9 @@
  ```bash
   docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong#Password" -p 1433:1433 -d --name sqlserver  mcr.microsoft.com/mssql/server:2022-latest
   ```
+
+7. Run migration(In VS: Tool > NuGet Package manager > Package manager console)
+
+ ```bash
+  update-database
+  ```

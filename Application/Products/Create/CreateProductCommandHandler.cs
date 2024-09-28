@@ -26,6 +26,7 @@ public sealed class CreateProductCommandHandler : IRequestHandler<CreateProductC
             command.Name,
             command.Description,
             command.Price,
+            command.Stock,
             new CategoryId(command.CategoryId),
             command.IsActive
         );

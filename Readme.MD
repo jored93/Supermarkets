@@ -66,7 +66,36 @@
   dotnet sln add Domain/Domain.csproj
   ```
 
-5. (Optional) Run project by CLI
+
+
+5. Create DB
+
+ ```bash
+  CREATE DATABASE SupermarketsDb;
+  GO
+  ```
+
+6. Run migration CLI
+
+ ```bash
+  dotnet tool install --global dotnet-ef
+  ```
+
+ ```bash
+  dotnet ef migrations add InitialCreate -p Infrastructure -s Web.API -o Persistence/Migrations
+  ```
+
+ ```bash
+  dotnet ef database update -p Infrastructure -s Web.API
+  ```
+
+7. Run migration(In VS: Tool > NuGet Package manager > Package manager console)
+
+ ```bash
+  update-database
+  ```
+
+8. Run project by CLI
 
  ```bash
   dotnet build
@@ -74,16 +103,4 @@
 
  ```bash
   dotnet run --project Web.API
-  ```
-
-6. Create docker MSSQL database
-
- ```bash
-  docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong#Password" -p 1433:1433 -d --name sqlserver  mcr.microsoft.com/mssql/server:2022-latest
-  ```
-
-7. Run migration(In VS: Tool > NuGet Package manager > Package manager console)
-
- ```bash
-  update-database
   ```

@@ -2,7 +2,7 @@ namespace Domain.Categories;
 
 public interface ICategoryRepository
 {
-    Task<List<Category>> GetAll();
+    Task<List<Category>> GetAll(Guid? id = null, string? name = null);
     Task<Category?> GetByIdAsync(CategoryId id);
     Task<bool> ExistsAsync(CategoryId id);
     void Add(Category category);
